@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  
+  <CommandSet xml:lang="zh-cn" Name="ProjectYCommandSet">
+    <AppName>灯</AppName>
+    <Example>开灯</Example>
+    
+      <Command Name="On">
+      <Example>把灯打开</Example>
+        
+      <ListenFor RequireAppName="ExplicitlySpecified">[把]{rooms}的{builtin:AppName}打开</ListenFor>
+      <Feedback>正在打开台灯</Feedback>
+      <VoiceCommandService Target="GeneralQueryVoiceCommandService"/>
+    </Command>
+
+    <Command Name="Off">
+      <Example>把灯关上</Example>
+      <ListenFor RequireAppName="ExplicitlySpecified">台{builtin:AppName}晚安</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">[把] {rooms} [的] {builtin:AppName} 关上</ListenFor>
+      <Feedback>正在关闭台灯</Feedback>
+      <VoiceCommandService Target="GeneralQueryVoiceCommandService"/>
+    </Command>
+    
+    <Command Name="Brighter">
+      <Example>把卧室的灯调亮</Example>
+      <ListenFor RequireAppName="ExplicitlySpecified">[请]把{rooms}[的]{builtin:AppName}调亮[一点]</ListenFor>
+      <ListenFor> [请] 增加 {rooms} 的 [亮度] </ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">[现在]{rooms}[的]{builtin:AppName}[光][还是]太暗[了]</ListenFor>
+      <Feedback>正在增加亮度</Feedback>
+      <VoiceCommandService Target="GeneralQueryVoiceCommandService"/>
+    </Command>
+
+    <Command Name="Darker">
+      <Example>请把灯调暗一点</Example>
+      <ListenFor>暗一点</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">[现在]{rooms}[的]{builtin:AppName}[光][还是]太亮[了]</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">[现在]{rooms}[的]{builtin:AppName}[光][还是]太刺眼[了]</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">把 {rooms} [的] {builtin:AppName} [光]调暗一点</ListenFor>
+      <Feedback>正在降低亮度</Feedback>
+      <VoiceCommandService Target="GeneralQueryVoiceCommandService"/>
+    </Command>
+
+    
+    <PhraseList Label="rooms">
+      <Item>厨房</Item>
+      <Item>卧室</Item>
+    </PhraseList>
+  </CommandSet>
+</VoiceCommands>
